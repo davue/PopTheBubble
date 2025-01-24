@@ -27,7 +27,7 @@ public class Background : MonoBehaviour
         }
     }
 
-    void SetBackground(int i)
+    public void SetBackground(int i)
     {
         GetComponent<SpriteRenderer>().sprite = backgrounds[i];
         ScaleSpriteToScreen();
