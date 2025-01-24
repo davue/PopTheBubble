@@ -1,23 +1,31 @@
+using System.Data;
 using UnityEngine;
 
 public class swapCursor : MonoBehaviour
 {
 
-    public GameObject currentCursor;
+    public int currentCursorIndex = 0;
+    public GameObject[] cursors;
+
+    GameObject currentCursor;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        currentCursor = Instantiate(cursors[currentCursorIndex]);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            //TODO:
-        }
+       // NOP
         
+    }
+
+    public void swap(int i) {
+            Destroy(currentCursor);
+            currentCursorIndex = i;
+            currentCursor = cursors[currentCursorIndex];
+            currentCursor = Instantiate(currentCursor);
     }
 }
