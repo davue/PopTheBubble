@@ -1,10 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SettingsMenu : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void CursorChange()
+    public Transform child;
+
+    public bool active = true;
+
+    void Start()
     {
-        
+        child = transform.GetChild(0);
+    }
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleWindow();
+        }
+    }
+
+    public void ToggleWindow()
+    {
+        active = !active;
+        child.gameObject.SetActive(active);
     }
 }
