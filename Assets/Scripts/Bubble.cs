@@ -6,13 +6,26 @@ public class Bubble : MonoBehaviour
     private bool _isPopped;
 
     public int introProgress = 0;
+    
+    // XP state
+    public bool xpCut = false;
+    public bool xpDelete = false;
+    
     public int zoomProgress = 0;
 
     public enum PopType{
         INTRO,
         XP,
         DANCE,
-        ZOOM
+        ZOOM,
+        XP_CUT,
+        XP_DELETE
+    }
+
+    public enum InteractionType
+    {
+        XP_COPY,
+        XP_CUTE
     }
 
     PopType currentPopType;
@@ -37,8 +50,25 @@ public class Bubble : MonoBehaviour
 
     }
 
+    public void Interact(InteractionType type)
+    {
+        if (type == InteractionType.XP_COPY)
+        {
+            ps.Play();
+            st.AddText("Whoooohoo!! More bubbles!!");
+            st.ActivateNextText();
+        } else if (type == InteractionType.XP_CUTE)
+        {
+            st.AddText("Awww thanks, you're cute tooo :)");
+            st.ActivateNextText();
+        }
+    }
+    
     public void Pop(PopType type)
     {
+        if(type == PopType.XP_CUT && xpCut) Interact(InteractionType.XP_CUTE);
+        if(type == PopType.XP_DELETE && xpDelete) return;
+        
         if(Globals.freezeAll) return;
 
         if(st.isActive()) return;
@@ -101,6 +131,21 @@ public class Bubble : MonoBehaviour
                 }
                 st.ActivateNextText();
             }
+            
+            if (type == PopType.XP_CUT)
+            {
+                st.AddText("Hey! You cut me!");
+                st.ActivateNextText();
+                xpCut = true;
+            }
+            
+            if (type == PopType.XP_DELETE)
+            {
+                xpDelete = true;
+                st.AddText("Oh no! I'm gone!");
+                st.ActivateNextText();
+            }
+            
             // Hide bubble
             renderer.enabled = false;
         }
@@ -177,6 +222,18 @@ public class Bubble : MonoBehaviour
                 st.ActivateNextText();
             }
             
+
+            if (type == PopType.XP_CUT)
+            {
+                st.AddText("Please don't do that.");
+                st.ActivateNextText();
+            }
+            
+            if (type == PopType.XP_DELETE)
+            {
+                st.AddText("Ha! I just climbed out of the Recycling Bin!");
+                st.ActivateNextText();
+            }
         }
     }
     

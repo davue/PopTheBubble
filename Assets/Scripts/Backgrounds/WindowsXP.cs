@@ -15,6 +15,9 @@ public class WindowsXP : Background
     // Update is called once per frame
     void Update()
     {
+        if (Globals.freezeAll) return;
+        // TODO: Return if ScrollingTExt is active
+        
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             // var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -23,14 +26,11 @@ public class WindowsXP : Background
             //     mousePos.y + contextMenuTransform.rect.height / 2, 0);
             // contextMenu.SetActive(true);
 
-            var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             var contextMenuTransform = (RectTransform)contextMenu.transform;
-            Debug.Log(Input.mousePosition);
-            Debug.Log(mousePos);
-            Debug.Log(contextMenuTransform.rect);
             contextMenu.transform.localPosition = new Vector3(
                 Input.mousePosition.x - Camera.main.pixelWidth / 2 - contextMenuTransform.rect.x,
                 Input.mousePosition.y - Camera.main.pixelHeight / 2 + contextMenuTransform.rect.y, 0);
+            contextMenu.GetComponent<ContextMenu>().OnOpen();
         }
         
         if (Input.GetKeyUp(KeyCode.Mouse0))

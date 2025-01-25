@@ -240,6 +240,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bubble: {fileID: 0}
+  _cutExtension: {fileID: 0}
+  _recycleBin: {fileID: 0}
+  _cutButton: {fileID: 0}
+  _deleteButton: {fileID: 0}
+  _copyButton: {fileID: 0}
+  onBubble: 0
+  onRecycleBin: 0
 --- !u!1 &6547791559039088404
 GameObject:
   m_ObjectHideFlags: 0

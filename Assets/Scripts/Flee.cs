@@ -1,6 +1,4 @@
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class flee : MonoBehaviour
 {
