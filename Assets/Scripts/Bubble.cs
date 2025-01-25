@@ -17,6 +17,8 @@ public class Bubble : MonoBehaviour
 
     public void Pop()
     {
+        if(Globals.isPaused) return;
+
         if (!_isPopped)
         {
             _isPopped = true;

@@ -5,11 +5,12 @@ public class SettingsMenu : MonoBehaviour
 {
     public Transform child;
 
-    public bool active = true;
+    public bool active = false;
 
     void Start()
     {
         child = transform.GetChild(0);
+        Globals.isPaused = false;
     }
     void Update()
     {
@@ -23,5 +24,7 @@ public class SettingsMenu : MonoBehaviour
     {
         active = !active;
         child.gameObject.SetActive(active);
+        if(active) Globals.isPaused = true;
+        else Globals.isPaused = false;
     }
 }
