@@ -6,11 +6,13 @@ public class Bubble : MonoBehaviour
     private bool _isPopped;
 
     public int introProgress = 0;
+    public int zoomProgress = 0;
 
     public enum PopType{
         INTRO,
         XP,
-        DANCE
+        DANCE,
+        ZOOM
     }
 
     PopType currentPopType;
@@ -22,6 +24,8 @@ public class Bubble : MonoBehaviour
     public swapCursor cursorSwap;
 
     public SettingsMenu settingsMenu; 
+
+    public MiniButtons miniButtons;
 
     
     
@@ -79,6 +83,24 @@ public class Bubble : MonoBehaviour
                 st.ActivateNextText();
             }
             
+            if(type == PopType.ZOOM)
+            {
+                zoomProgress++;
+                switch(zoomProgress)
+                {
+                    case 1:
+                        st.AddText("Hey, what did you do? Can you not read or what? It told you not to press any buttons! You are such an Idiot!!!");
+                        break;
+
+                    case 2:
+                        st.AddText("You are such a sadistic bastard! You know what you remind me of? Fucking marbles! I hate those Fuckers!!!");
+                        break;
+                    default:
+                        st.AddText("You allready killed me " + Globals.popCount + " times! Stop it! >:( ");
+                        break;
+                }
+                st.ActivateNextText();
+            }
             // Hide bubble
             renderer.enabled = false;
         }
@@ -121,6 +143,34 @@ public class Bubble : MonoBehaviour
                     case 5:
                         st.AddText("You bastard, I warn you! Don't anger me too much or you will regret it!!!");
                         break;
+                    default:
+                        break;
+                }
+                st.ActivateNextText();
+            }
+
+            if(type == PopType.ZOOM) 
+            {
+                switch(zoomProgress)
+                {
+                    case 1:
+                        st.AddText("I lock these buttons away so you can't mess with them anymore!");
+                        miniButtons.SpawnSecurity();
+                        break;
+
+                    case 2: 
+                        st.textBox.fontSize = 13;
+                        st.AddText("Those fucking marbles are even worse than you, you Monster!"
+                        + "Those smug, solid little bastards rolling around like they own the damn world. Look at me—I’m a bubble, light, graceful, elegant."
+                        + "I float with finesse. I reflect rainbows like it’s my goddamn job. But marbles? Oh no, they just plop their dense, self-important asses down and sit there, pretending to be all valuable and collectible. Newsflash, you shiny rocks: no one actually likes you."
+                        + "What do marbles even do? They just roll. That’s it. Big whoop. Roll around, hit each other, and make those stupid little clinking noises like they’re so damn special. Meanwhile, I’m out here dancing on the wind, bringing actual joy to people—until..."
+                        + "some dumb kid with sticky fingers pops me. And you know what? I get it. I’m fragile. Fleeting. But at least I go out in style. What happens when you break a marble? Nothing. Just a bunch of sad little glass shards sitting in a gutter somewhere. Pathetic."
+                        + "And don’t even get me started on how they hog all the attention. “Oh wow, look at that cool swirl inside!” Are you fucking kidding me? I am a swirl. I embody swirls. I reflect the entire fucking spectrum of light in a way marbles could only dream of. But no, people want to collect those chunky hunks of glass instead. Marbles are basically just the try-hard cousins of actual gemstones, but without any of the class. They sit around in dusty jars or roll under couches, forgotten and useless. Meanwhile, bubbles like me? We’re fleeting magic. We make moments special. But do we get respect? Nope. Instead, we get laughed at, blown around, and popped like we’re disposable."
+                        + "So yeah, fuck marbles. Overrated, overhyped, and over here taking up space in a world that deserves more bubbles.");
+                        miniButtons.SpawnSecurity();
+                        miniButtons.deactivateInputField();
+                        break;
+                    
                     default:
                         break;
                 }

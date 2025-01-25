@@ -13,18 +13,7 @@ public class BackgroundManager : MonoBehaviour
         currentBackground.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown("b"))
-        {
-            backgroundIndex++;
-            if(backgroundIndex >= backgrounds.Length)
-                backgroundIndex = 0;
-            SetBackground(backgroundIndex);
-            
-        }
-    }
+   
 
     public void SetBackground(int i)
     {

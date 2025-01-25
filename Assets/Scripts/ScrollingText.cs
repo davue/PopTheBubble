@@ -6,7 +6,11 @@ using UnityEngine;
 
 public class ScrollingText : MonoBehaviour
 {
+    public static ScrollingText instance;
     private readonly List<char> _punctuations = new() { '.', '!', '?' };
+
+    public const int fontSize = 36;
+
     private CanvasRenderer _renderer;
     private Transform _child;
     private bool _inCorutine = false;
@@ -17,7 +21,7 @@ public class ScrollingText : MonoBehaviour
     [SerializeField] private float punctuationPause = 0.02f;
 
     [Header("UI Elements")] [SerializeField]
-    private TextMeshProUGUI textBox;
+    public TextMeshProUGUI textBox;
     [SerializeField] private bool autoClose = false;
     [SerializeField] private float waitAfterText = 2.0f;
 
@@ -30,6 +34,7 @@ public class ScrollingText : MonoBehaviour
     {
         _child = transform.GetChild(0);
         _renderer = _child.GetComponent<CanvasRenderer>();
+        instance = this;
     }
 
     public void Start()
@@ -65,18 +70,20 @@ public class ScrollingText : MonoBehaviour
         }
         else
         {
+            textBox.fontSize = fontSize;
             _child.gameObject.SetActive(false);
         }
     }
 
     IEnumerator AnimateText()
     {
+        textBox.text = "";
         _inCorutine = true;
         
-        for (int i = 0; i < text.Length + 1; i++)
+        for (int i = 0; i < text.Length; i++)
         {
             // Update text
-            textBox.text = text.Substring(0, i);
+            textBox.text += text[i];
             
             // Play bubble sound
             if (i % 3 == 0)

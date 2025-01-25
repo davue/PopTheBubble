@@ -38,7 +38,7 @@ public class SettingsMenu : MonoBehaviour
         
         if(active){ Globals.freezeAll = true; UnityEngine.Cursor.visible = true;}
         else { Globals.freezeAll = false; UnityEngine.Cursor.visible = false;}
-        
+
     }
 
     public void removeCursorOption()

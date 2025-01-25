@@ -36,4 +36,9 @@ public class cursor : MonoBehaviour
         
         col.gameObject.GetComponent<Bubble>()?.Pop(Bubble.PopType.INTRO);
     }
+
+    public void ResetScale()
+    {
+        transform.localScale = initScale;
+    }
 }

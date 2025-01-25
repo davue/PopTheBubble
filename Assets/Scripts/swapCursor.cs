@@ -7,13 +7,13 @@ public class swapCursor : MonoBehaviour
     public int currentCursorIndex = 0;
     public GameObject[] cursors;
 
-    GameObject currentCursor;
+    public GameObject currentCursor;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentCursor = Instantiate(cursors[currentCursorIndex]);
-        currentCursor.GetComponent<SpriteRenderer>().sortingOrder = 15;
+        currentCursor.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 15;
     }
 
     
@@ -27,5 +27,10 @@ public class swapCursor : MonoBehaviour
             currentCursor = Instantiate(currentCursor);
             currentCursor.GetComponent<SpriteRenderer>().sortingOrder = 15;
             SettingsMenu.instance.SetCursor(i); 
+    }
+
+    public void ResetCursor()
+    {
+        currentCursor.GetComponent<cursor>().ResetScale();
     }
 }
