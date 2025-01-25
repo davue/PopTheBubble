@@ -35,9 +35,9 @@ RectTransform:
   m_Father: {fileID: 8193162306413057177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -285.5078}
-  m_SizeDelta: {x: -46.2656, y: -607.5422}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 91.99219}
+  m_SizeDelta: {x: -10.265625, y: 147.45782}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &962899875739625965
 CanvasRenderer:
@@ -93,6 +93,7 @@ MonoBehaviour:
   scrollSpeed: 0.01
   punctuationPause: 0.5
   textBox: {fileID: 4689660756049500285}
+  autoClose: 0
   waitAfterText: 2
   audioSourcePrefab: {fileID: 1319542771092665987, guid: 0265c5bbb028a0746b88772a30024bda, type: 3}
 --- !u!1 &2613443382407955851
@@ -229,10 +230,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5641521958267174112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.3108, y: -1.3546}
-  m_SizeDelta: {x: 1108.6216, y: 147.3522}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0.539978, y: 73.46}
+  m_SizeDelta: {x: -13.59, y: 136.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8068350092745422752
 CanvasRenderer:

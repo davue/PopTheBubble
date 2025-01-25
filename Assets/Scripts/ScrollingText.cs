@@ -8,6 +8,7 @@ public class ScrollingText : MonoBehaviour
 {
     private readonly List<char> _punctuations = new() { '.', '!', '?' };
     private CanvasRenderer _renderer;
+    private bool _idle;
 
     [Header("Text Settings")]
     [SerializeField] [TextArea] private string text;
@@ -16,6 +17,7 @@ public class ScrollingText : MonoBehaviour
 
     [Header("UI Elements")] [SerializeField]
     private TextMeshProUGUI textBox;
+    [SerializeField] private bool autoClose = false;
     [SerializeField] private float waitAfterText = 2.0f;
 
     [Header("Sound Settings")]
@@ -38,6 +40,8 @@ public class ScrollingText : MonoBehaviour
 
     IEnumerator AnimateText()
     {
+        _idle = false;
+        
         for (int i = 0; i < text.Length + 1; i++)
         {
             // Update text
@@ -60,16 +64,29 @@ public class ScrollingText : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
         
-        // Hide text panel
-        yield return new WaitForSeconds(waitAfterText);
-        gameObject.SetActive(false);
+        // Hide text panel if auto-close
+        if (autoClose)
+        {
+            yield return new WaitForSeconds(waitAfterText);
+            gameObject.SetActive(false);
+        }
+        
+        _idle = true;
     }
     
     void Update()
     {
         if (Input.GetKeyDown("space"))
         {
-            ActivateText();
+            if (_idle)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.SetActive(true);
+                ActivateText();
+            }
         }
     }
 }
