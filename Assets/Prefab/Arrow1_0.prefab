@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4638888702618801384}
   - component: {fileID: 8059103092327644783}
   - component: {fileID: 572106306879606373}
+  - component: {fileID: 8982427198700914193}
   m_Layer: 0
   m_Name: Arrow1_0
   m_TagString: Untagged
@@ -135,5 +136,32 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.182277, y: 0.3000911}
-  m_Radius: 0.0754725
+  m_Offset: {x: -0.18, y: 0.2850091}
+  m_Radius: 0.000754725
+--- !u!50 &8982427198700914193
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104265466129332876}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

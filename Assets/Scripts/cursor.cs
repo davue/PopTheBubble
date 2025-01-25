@@ -31,4 +31,10 @@ public class cursor : MonoBehaviour
             transform.localScale += transform.localScale * ScrollWheelChange;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        col.gameObject.GetComponent<Bubble>()?.Pop();
+        Debug.Log("HELLO");
+    }
 }
