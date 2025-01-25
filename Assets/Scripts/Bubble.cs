@@ -9,6 +9,10 @@ public class Bubble : MonoBehaviour
     private SpriteRenderer renderer;
     public ScrollingText st;
 
+    public swapCursor cursorSwap;
+
+    public SettingsMenu settingsMenu; 
+
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,9 +47,10 @@ public class Bubble : MonoBehaviour
                     break;
                 case 2:
                     st.AddText("Oh no, it happened again! Please, be more careful! :(");
+                    st.AddText("I have many lives, but no need to waste them. Please, be more careful!");
                     break;
                 case 3:
-                    st.AddText("Hey, you killed me again! Please, stop! It really hurts me and I have only so many lifes!");
+                    st.AddText("Why did you do that? I went out of my way to switch the cursor for you! Are you doing this on purpose?");
                     break;
                 case 4:
                     st.AddText("Ouch! That hurts so much! Are you doing this on purpose? I thought we are friends! :'(");
@@ -82,10 +87,17 @@ public class Bubble : MonoBehaviour
                     st.AddText("I can respawn though, so don't worry! Let's continue playing! :)");
                     break;
                 case 2:
-                    st.AddText("I have many lives, but no need to waste them. Please, be more careful!");
+                    st.AddText("Here, I switch the cursor for you, the one you use is quite pointy!");
+                    cursorSwap.swap(1);
+                    st.AddText("I hope you like it!");
+                    Globals.cursorSwapPhase = true;
                     break;
                 case 3:
+                    Globals.cursorSwapPhase = false;
                     st.AddText("Ugh, this is getting on my nerves....");
+                    st.AddText("You are really a stupid one, aren't you? I'll make sure you can't hurt me anymore.");
+                    cursorSwap.swap(1);
+                    settingsMenu.removeCursorOption();
                     break;
                 case 4:
                     st.AddText("Please show some respect! I'm not a toy! >:(");

@@ -16,18 +16,16 @@ public class swapCursor : MonoBehaviour
         currentCursor.GetComponent<SpriteRenderer>().sortingOrder = 15;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       // NOP
-        
-    }
+    
 
-    public void swap(int i) {
+    public void swap(int i) 
+    {
+
             Destroy(currentCursor);
             currentCursorIndex = i;
             currentCursor = cursors[currentCursorIndex];
             currentCursor = Instantiate(currentCursor);
             currentCursor.GetComponent<SpriteRenderer>().sortingOrder = 15;
+            SettingsMenu.instance.SetCursor(i); 
     }
 }

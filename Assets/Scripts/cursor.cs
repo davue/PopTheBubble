@@ -10,7 +10,6 @@ public class cursor : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
         initSize = Camera.main.orthographicSize;
         initScale = transform.localScale;
     }
@@ -34,6 +33,7 @@ public class cursor : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        
         col.gameObject.GetComponent<Bubble>()?.Pop();
         Debug.Log("HELLO");
     }

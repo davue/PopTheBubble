@@ -585,6 +585,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &982778480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6908040593290528730, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
+  m_PrefabInstance: {fileID: 1792558700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e636cc23bcf97fe4397c6027e4a79dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1413847791
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +644,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1475517059 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9191274189140244019, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
+  m_PrefabInstance: {fileID: 1792558700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1684936442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -685,6 +707,14 @@ PrefabInstance:
       propertyPath: st
       value: 
       objectReference: {fileID: 663555395}
+    - target: {fileID: 6276070763189348198, guid: b75faf8dc8707084692234b6705408b0, type: 3}
+      propertyPath: cursorSwap
+      value: 
+      objectReference: {fileID: 1413847792}
+    - target: {fileID: 6276070763189348198, guid: b75faf8dc8707084692234b6705408b0, type: 3}
+      propertyPath: settingsMenu
+      value: 
+      objectReference: {fileID: 982778480}
     - target: {fileID: 6830396412506203390, guid: b75faf8dc8707084692234b6705408b0, type: 3}
       propertyPath: m_Name
       value: Bubble
@@ -902,6 +932,10 @@ PrefabInstance:
       propertyPath: scrollingText
       value: 
       objectReference: {fileID: 663555395}
+    - target: {fileID: 6908040593290528730, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
+      propertyPath: cursorDropdown
+      value: 
+      objectReference: {fileID: 1475517059}
     - target: {fileID: 7240091723184282052, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -917,6 +951,18 @@ PrefabInstance:
     - target: {fileID: 7614152159571460828, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191274189140244019, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191274189140244019, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1413847792}
+    - target: {fileID: 9191274189140244019, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: swap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,6 +5,10 @@ public class Globals : MonoBehaviour
 {
     public static bool freezeAll = false;
 
+    public static bool cheatMode = false;
+
+    public static bool cursorSwapPhase = false;
+
     public static int popCount = 0;
 
     public ScrollingText scrollingText;

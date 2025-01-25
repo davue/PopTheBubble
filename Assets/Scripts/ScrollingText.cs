@@ -26,10 +26,16 @@ public class ScrollingText : MonoBehaviour
 
     public Queue<string> textQueue = new Queue<string>();
 
-    private void Start()
+    private void Awake()
     {
         _child = transform.GetChild(0);
         _renderer = _child.GetComponent<CanvasRenderer>();
+    }
+
+    public void Start()
+    {
+        if(Globals.cheatMode) _child.gameObject.SetActive(false);
+        
     }
 
     public bool isActive()
@@ -43,11 +49,14 @@ public class ScrollingText : MonoBehaviour
     }
     public void AddText(string text)
     {
+        if(Globals.cheatMode) return;
         textQueue.Enqueue(text);
     }
 
     public void ActivateNextText()
     {
+        if(Globals.cheatMode) return;
+
         if(textQueue.Count > 0)
         {
             _child.gameObject.SetActive(true);
