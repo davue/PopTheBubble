@@ -12,13 +12,10 @@ public class DiscoButton : MonoBehaviour
     Vector3 stageBounds;
     public float stepSize = -5f;
 
-    float radius;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Bounds spriteBounds =GetComponent<SpriteRenderer>().sprite.bounds;
-        radius = spriteBounds.size.x / 2;
         stageBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0));
 
         initArrow();
