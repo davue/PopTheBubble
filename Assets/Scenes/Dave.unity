@@ -340,6 +340,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1374008636 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6276070763189348198, guid: b75faf8dc8707084692234b6705408b0, type: 3}
+  m_PrefabInstance: {fileID: 1442163499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664b61562e750fe49893f8d65180675c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1442163499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -633,6 +644,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 667328263334593294, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: _bubble
+      value: 
+      objectReference: {fileID: 1374008636}
     - target: {fileID: 3982317223784149644, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.07649863
@@ -673,14 +688,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4859433527618059768, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
+    - target: {fileID: 6349523245313269866, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: 'backgrounds.Array.data[0]'
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6203129812856928157, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
-      propertyPath: m_SortingOrder
-      value: -32000
-      objectReference: {fileID: 0}
+    - target: {fileID: 7813348079981193072, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 8068405223360917055, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
       propertyPath: m_Name
       value: BackgroundManager

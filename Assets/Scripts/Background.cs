@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected void Start()
     {
-        
+        ScaleSpriteToScreen();
     }
 
     // Update is called once per frame
@@ -16,23 +18,21 @@ public class Background : MonoBehaviour
 
     public void ScaleSpriteToScreen()
     {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-
         // Get the size of the sprite
-        float width = sr.sprite.bounds.size.x;
-        float height = sr.sprite.bounds.size.y;
+        float width = spriteRenderer.bounds.size.x;
+        float height = spriteRenderer.bounds.size.y;
 
         // Get the world screen height and width
         float worldScreenHeight = Camera.main.orthographicSize * 2.0f;
         float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
 
         // Calculate the scale needed to fit the screen
-        Vector3 scale = transform.localScale;
+        Vector3 scale = spriteRenderer.gameObject.transform.localScale;
         scale.x = worldScreenWidth / width;
         scale.y = worldScreenHeight / height;
 
         // Apply the scale to the transform
-        transform.localScale = scale;
+        spriteRenderer.gameObject.transform.localScale = scale;
     }
 }
 
