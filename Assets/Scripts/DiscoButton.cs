@@ -10,7 +10,7 @@ public class DiscoButton : MonoBehaviour
     public KeyCode hittingKeyCode;
 
     Vector3 stageBounds;
-    public float stepSize = -0.02f;
+    public float stepSize = -5f;
 
     float radius;
 
@@ -62,7 +62,7 @@ public class DiscoButton : MonoBehaviour
             initArrow();
             transform.position = new Vector2(xMin, transform.position.y);
         }
-        transform.position += new Vector3(stepSize, 0, 0);
+        transform.position += new Vector3(stepSize, 0, 0) * Time.deltaTime;
         arrow.transform.position = transform.position;
     }
 }
