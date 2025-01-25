@@ -11,6 +11,7 @@ public class BackgroundManager : MonoBehaviour
     {
         currentBackground = backgrounds[0];
         currentBackground.SetActive(true);
+        currentBackground.GetComponent<Background>().ScaleSpriteToScreen();
     }
 
     // Update is called once per frame

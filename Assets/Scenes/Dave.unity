@@ -643,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3982317223784149644, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 152.93753
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3982317223784149644, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
       propertyPath: m_LocalRotation.w
@@ -673,6 +673,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4859433527618059768, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203129812856928157, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: m_SortingOrder
+      value: -32000
+      objectReference: {fileID: 0}
     - target: {fileID: 8068405223360917055, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
       propertyPath: m_Name
       value: BackgroundManager
@@ -688,7 +696,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 8247752520414816097}
   - {fileID: 1442163499}
   - {fileID: 1436765741297686501}
   - {fileID: 2130011174}
-  - {fileID: 8247752520414816097}
