@@ -4,6 +4,8 @@ public class Bubble : MonoBehaviour
 {
     public ParticleSystem ps;
     private bool _isPopped;
+
+    public bool Debug = true;
     private SpriteRenderer renderer;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,15 +42,17 @@ public class Bubble : MonoBehaviour
     
     // Update is called once per frame
     void Update()
-    {
-        // if(Input.GetKeyDown("p") && !_isPopped)
-        // {
-        //     Pop();
-        // }
-        //
-        // if(Input.GetKeyDown("r") && _isPopped)
-        // {
-        //     UnPop();
-        // }
+    {   
+        if(!Debug) return;
+        if(Input.GetKeyDown("p") && !_isPopped)
+        {
+             Pop();
+        }
+        
+        if(Input.GetKeyDown("r") && _isPopped)
+        {
+            UnPop();
+        }
+        
     }
 }
