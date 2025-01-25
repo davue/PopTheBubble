@@ -116,10 +116,11 @@ public class ScrollingText : MonoBehaviour
     
     void Update()
     {
-        if(Globals.freezeAll) return;
+        if(Globals.freezeAll) {Debug.Log("Frozen2"); return;}
 
         if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Was HEre");
             if (!_inCorutine)
             {
                 ActivateNextText();

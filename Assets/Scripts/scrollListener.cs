@@ -11,6 +11,7 @@ public class scrollListener : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Globals.freezeAll || ScrollingText.instance.isActive()) return;
         float ScrollWheelChange = Input.GetAxis("Mouse ScrollWheel");
         if(Input.GetKeyDown(KeyCode.UpArrow)) {
             ScrollWheelChange = 0.5f;   

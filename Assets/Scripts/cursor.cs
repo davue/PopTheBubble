@@ -20,6 +20,8 @@ public class cursor : MonoBehaviour
         transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());       
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         
+        if(Globals.freezeAll || ScrollingText.instance.isActive()) return;
+        
         float ScrollWheelChange = Input.GetAxis("Mouse ScrollWheel");
         if(Input.GetKeyDown(KeyCode.UpArrow)) {
             ScrollWheelChange = 0.5f;   

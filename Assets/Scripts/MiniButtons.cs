@@ -43,6 +43,7 @@ public class MiniButtons : MonoBehaviour
 
     public void MakeBubblePop()
     {
+        if(Globals.freezeAll) return;
         Camera.main.orthographicSize = 5;
         sc.ResetCursor();
         bubble.Pop(Bubble.PopType.ZOOM);
