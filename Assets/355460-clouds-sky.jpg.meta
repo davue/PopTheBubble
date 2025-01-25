@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9aa3cf419a14645e2a119faf1984c92e
+guid: 31205e8079e6aeb41b23ff93ae122031
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4358479926276309431
-    second: arrow07_2_0
+      213: 9047219480013231136
+    second: 355460-clouds-sky_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: arrow07_2_0
+      name: 355460-clouds-sky_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 500
-        height: 500
+        width: 2560
+        height: 1440
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7b1ce56966e6c7c30800000000000000
-      internalID: 4358479926276309431
+      spriteID: 024de2fce2e2e8d70800000000000000
+      internalID: 9047219480013231136
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      arrow07_2_0: 4358479926276309431
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

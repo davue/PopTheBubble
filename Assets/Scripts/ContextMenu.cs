@@ -7,7 +7,7 @@ public class ContextMenu : MonoBehaviour
     public void Cut()
     {
         Debug.Log("CUT!!");
-        _bubble.Pop();
+        _bubble.Pop(Bubble.PopType.XP);
     }
 
     public void Copy()

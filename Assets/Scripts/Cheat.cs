@@ -24,8 +24,8 @@ public class Cheat : MonoBehaviour
             hasCheated = true;
             for(int i = 0; i < popStartLevel; i++)
             {
-                bubble.Pop();
-                bubble.UnPop();
+                bubble.Pop(Bubble.PopType.INTRO);
+                bubble.UnPop(Bubble.PopType.INTRO);
             }
             Globals.cheatMode = false;
         }

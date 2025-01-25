@@ -34,7 +34,6 @@ public class cursor : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         
-        col.gameObject.GetComponent<Bubble>()?.Pop();
-        Debug.Log("HELLO");
+        col.gameObject.GetComponent<Bubble>()?.Pop(Bubble.PopType.INTRO);
     }
 }
