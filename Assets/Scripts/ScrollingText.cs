@@ -8,7 +8,8 @@ public class ScrollingText : MonoBehaviour
 {
     private readonly List<char> _punctuations = new() { '.', '!', '?' };
     private CanvasRenderer _renderer;
-    private bool _idle;
+    private Transform _child;
+    private bool _inCorutine = false;
 
     [Header("Text Settings")]
     [SerializeField] [TextArea] private string text;
@@ -23,24 +24,45 @@ public class ScrollingText : MonoBehaviour
     [Header("Sound Settings")]
     [SerializeField] private GameObject audioSourcePrefab;
 
+    public Queue<string> textQueue = new Queue<string>();
+
     private void Start()
     {
-        _renderer = GetComponent<CanvasRenderer>();
+        _child = transform.GetChild(0);
+        _renderer = _child.GetComponent<CanvasRenderer>();
     }
 
-    public void SetText(string text)
+    public bool isActive()
     {
-        this.text = text;
+        return _child.gameObject.activeSelf;
+    }
+    
+    public void ClearQueue()
+    {
+        textQueue.Clear();
+    }
+    public void AddText(string text)
+    {
+        textQueue.Enqueue(text);
     }
 
-    public void ActivateText()
+    public void ActivateNextText()
     {
-        StartCoroutine(AnimateText());
+        if(textQueue.Count > 0)
+        {
+            _child.gameObject.SetActive(true);
+            text = textQueue.Dequeue();
+            StartCoroutine(AnimateText());
+        }
+        else
+        {
+            _child.gameObject.SetActive(false);
+        }
     }
 
     IEnumerator AnimateText()
     {
-        _idle = false;
+        _inCorutine = true;
         
         for (int i = 0; i < text.Length + 1; i++)
         {
@@ -70,23 +92,23 @@ public class ScrollingText : MonoBehaviour
             yield return new WaitForSeconds(waitAfterText);
             gameObject.SetActive(false);
         }
+
+        _inCorutine = false;
         
-        _idle = true;
+
     }
     
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if(Globals.freezeAll) return;
+
+        if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0))
         {
-            if (_idle)
+            if (!_inCorutine)
             {
-                gameObject.SetActive(false);
+                ActivateNextText();
             }
-            else
-            {
-                gameObject.SetActive(true);
-                ActivateText();
-            }
+            
         }
     }
 }
