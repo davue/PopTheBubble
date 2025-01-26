@@ -175,8 +175,6 @@ public class Bubble : MonoBehaviour
 
     public void UnPop(PopType type)
     {
-        Debug.Log("Unpop");
-
         if (_isPopped)
         {
             // Show bubble

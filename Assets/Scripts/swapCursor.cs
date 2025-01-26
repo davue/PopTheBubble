@@ -13,7 +13,7 @@ public class swapCursor : MonoBehaviour
     void Start()
     {
         currentCursor = Instantiate(cursors[currentCursorIndex]);
-        currentCursor.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 15;
+        currentCursor.GetComponent<cursor>().cursorObject.GetComponent<SpriteRenderer>().sortingOrder = 15;
     }
 
     
@@ -25,7 +25,7 @@ public class swapCursor : MonoBehaviour
             currentCursorIndex = i;
             currentCursor = cursors[currentCursorIndex];
             currentCursor = Instantiate(currentCursor);
-            currentCursor.GetComponent<SpriteRenderer>().sortingOrder = 15;
+            currentCursor.GetComponent<cursor>().cursorObject.GetComponent<SpriteRenderer>().sortingOrder = 15;
             SettingsMenu.instance.SetCursor(i); 
     }
 

@@ -120,7 +120,6 @@ public class ScrollingText : MonoBehaviour
 
         if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Was HEre");
             if (!_inCorutine)
             {
                 ActivateNextText();

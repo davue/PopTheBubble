@@ -22,6 +22,7 @@ public class cursor : MonoBehaviour
     {
         transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());       
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        transform.rotation = Quaternion.identity;
         cursorObject.transform.localPosition = initialPosition;
         
         if(Globals.freezeAll || ScrollingText.instance.isActive()) return;
