@@ -9,6 +9,8 @@ public class Globals : MonoBehaviour
 
     public static int popCount = 0;
 
+    public static int volumePercentage;
+
     public ScrollingText scrollingText;
 
     string introText = "Welcome to the game! My name is Bubbly McBubbleface. Play with me! uwu! But be careful, I'm very fragile!";
