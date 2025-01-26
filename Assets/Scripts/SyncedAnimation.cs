@@ -4,7 +4,7 @@ public class SyncedAnimation : MonoBehaviour
 {
 
     //The animator controller attached to this GameObject
-    public Animator animator;
+    Animator animator;
 
     //Records the animation state or animation that the Animator is currently in
     public AnimatorStateInfo animatorStateInfo;

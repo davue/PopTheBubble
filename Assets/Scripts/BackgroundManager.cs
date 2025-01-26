@@ -23,7 +23,8 @@ public class BackgroundManager : MonoBehaviour
 
     private void ActivateBackground(int index)
     {
-        currentBackground?.SetActive(false);
+        if(currentBackground != null) currentBackground.SetActive(false);
+        //currentBackground?.SetActive(false); 
         currentBackground = backgrounds[index];
         currentBackground.SetActive(true);
 

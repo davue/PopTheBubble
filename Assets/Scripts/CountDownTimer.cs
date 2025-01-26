@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class CountDownTimer : MonoBehaviour
 {
 
-    public float totalTime = 30; //Set the total time for the countdown
+    public float totalTime = 60; //Set the total time for the countdown
+
+    public int score = 0;
     public TextMeshProUGUI timerText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,10 +17,13 @@ public class CountDownTimer : MonoBehaviour
 
   void Update()
   {
+    if(ScrollingText.instance.isActive()) return;
+    if(Globals.freezeAll) return;
+
+    totalTime -= Time.deltaTime;
     if (totalTime > 0)
     {
       // Subtract elapsed time every frame
-      totalTime -= Time.deltaTime;
 
       // Divide the time by 60
       float minutes = Mathf.FloorToInt(totalTime / 60); 
@@ -27,17 +32,22 @@ public class CountDownTimer : MonoBehaviour
       float seconds = Mathf.FloorToInt(totalTime % 60);
 
       // Set the text string
-      timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+      timerText.text = "Time left: " + string.Format("{0:00}:{1:00}", minutes, seconds) + "\nScore: " + score;
     }
     else
     {
-      timerText.text = "Time's up"; 
-      totalTime = 0;
+        timerText.text = "Time left: 0" + "\nScore: " + score;
     }
+
   }
 
     public void addMalus() {
-        totalTime += 10;
+        score -= 10;
+    }
+
+    public void addBonus()
+    {
+      score += 10;
     }
 
 }

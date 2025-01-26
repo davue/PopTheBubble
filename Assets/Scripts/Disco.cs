@@ -25,6 +25,9 @@ public class Disco : MonoBehaviour
     // music
     public AudioSource musicSource;
 
+    public const float initalPitch = 0.7f;
+    public float pitchStepSize = 0.1f;
+    public bool pitchSizeAdditive = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,11 +35,15 @@ public class Disco : MonoBehaviour
         discoButtonStartPos = discoButton.transform.position;
         prevDiscoPos= discoButtonStartPos.x;
         musicSource.Play();
+        bubble.GetComponent<Bubble>().StartDance();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(ScrollingText.instance.isActive()) return;
+        if(Globals.freezeAll) return;
+
         if(timer.totalTime <= 0) { // time's up
             teardownDisco();
         }
@@ -65,8 +72,6 @@ public class Disco : MonoBehaviour
                     else if(Input.GetKeyDown(KeyCode.UpArrow)) {
                         if(inZone && discoButton.hittingKeyCode == KeyCode.UpArrow) hitInput();
                         else missedInput();
-                    }else {
-                        missedInput();
                     }
                 }else {
                     prevDiscoPos = discoButton.transform.position.x;
@@ -77,24 +82,35 @@ public class Disco : MonoBehaviour
     }
 
     void teardownDisco() {
-        Cursor.visible = true;
         if(musicSource.isPlaying) musicSource.Stop();
-        //TODO: stop bubble animation
+        bubble.GetComponent<Bubble>().Pop(Bubble.PopType.DANCE);
+        bubble.GetComponent<Bubble>().EndDance();
+
+        discoButton.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
     void hitInput() {
         Debug.Log("Hit Input");
+        timer.addBonus();
         resetDiscoButton();
+        if(pitchSizeAdditive)
+            musicSource.pitch += pitchStepSize;
+        else musicSource.pitch *= pitchStepSize + 1f;
+        discoButton.stepSize *= 1.1f;
     }
 
     void missedInput() {
         Debug.Log("Missed Input");
         timer.addMalus();
         resetDiscoButton();
+        discoButton.stepSize = discoButton.initStepSize;
+        musicSource.pitch = initalPitch;
     }
 
     void resetDiscoButton() {
         prevDiscoPos = discoButtonStartPos.x;
-        discoButton.transform.position = discoButtonStartPos;
+        discoButton.transform.position = discoButtonStartPos;  
+        discoButton.initArrow();
     }
 }

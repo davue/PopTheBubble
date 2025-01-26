@@ -13,11 +13,6 @@ public class scrollListener : MonoBehaviour
     {
         if(Globals.freezeAll || ScrollingText.instance.isActive()) return;
         float ScrollWheelChange = Input.GetAxis("Mouse ScrollWheel");
-        if(Input.GetKeyDown(KeyCode.UpArrow)) {
-            ScrollWheelChange = 0.5f;   
-        }else if(Input.GetKeyDown(KeyCode.DownArrow)){
-            ScrollWheelChange = -0.5f;   
-        }
         if(ScrollWheelChange != 0) {
             Camera.main.orthographicSize += Camera.main.orthographicSize * ScrollWheelChange;
         }

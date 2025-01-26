@@ -40,7 +40,7 @@ public class Bubble : MonoBehaviour
 
     public SettingsMenu settingsMenu; 
 
-    public MiniButtons miniButtons;
+    public MiniButtons miniButtons; 
 
     
     
@@ -49,6 +49,7 @@ public class Bubble : MonoBehaviour
     {
         gameObject.GetComponentInChildren<ParticleSystem>();
         renderer = GetComponent<SpriteRenderer>();
+        EndDance();
 
     }
 
@@ -164,6 +165,12 @@ public class Bubble : MonoBehaviour
             {
                 xpFinalDelete = true;
                 st.AddText("Hey! I should not have told you about the recycle bin.");
+                st.ActivateNextText();
+            }
+
+            if(type == PopType.DANCE)
+            {
+                st.AddText("Tenst");
                 st.ActivateNextText();
             }
             
@@ -291,6 +298,20 @@ public class Bubble : MonoBehaviour
         {
             UnPop(currentPopType);
         }
+        
+    }
+
+    public void EndDance()
+    {
+        
+        GetComponent<Animator>().enabled = false;
+        transform.position = Vector3.zero;
+        
+    }
+
+    public void StartDance()
+    {
+        GetComponent<Animator>().enabled = true;
         
     }
 }

@@ -106,7 +106,7 @@ public class ScrollingText : MonoBehaviour
         if (autoClose)
         {
             yield return new WaitForSeconds(waitAfterText);
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); 
         }
 
         _inCorutine = false;
