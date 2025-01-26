@@ -3,6 +3,7 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
+    public bool openedOnce = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected void Start()
@@ -14,6 +15,11 @@ public class Background : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public virtual string InitialMessage()
+    {
+        return null;
     }
 
     public void ScaleSpriteToScreen()

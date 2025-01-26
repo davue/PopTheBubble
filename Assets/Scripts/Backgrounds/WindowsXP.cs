@@ -11,6 +11,11 @@ public class WindowsXP : Background
         contextMenu.transform.position = new Vector3(-10000, -10000, 0);
     }
 
+    public override string InitialMessage()
+    {
+        return "Ahh... I always liked the aesthetics of Windows XP.";
+    }
+    
     // Update is called once per frame
     void Update()
     {

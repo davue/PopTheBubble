@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
 {
-    private GameObject currentBackground;
+    private GameObject currentBackground = null;
     private int backgroundIndex;
     public GameObject[] backgrounds;
 
@@ -11,18 +11,30 @@ public class BackgroundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentBackground = backgrounds[0];
-        currentBackground.SetActive(true);
+        ActivateBackground(0);
     }
-
-   
 
     public void SetBackground(int i)
     {
         Camera.main.orthographicSize = 5;
         sc.ResetCursor();
-        currentBackground.SetActive(false);
-        currentBackground = backgrounds[i];
+        ActivateBackground(i);
+    }
+
+    private void ActivateBackground(int index)
+    {
+        currentBackground?.SetActive(false);
+        currentBackground = backgrounds[index];
         currentBackground.SetActive(true);
+
+        Background background = currentBackground.GetComponent<Background>();
+        Debug.Log(background.InitialMessage());
+        if (!background.openedOnce && background.InitialMessage() != null)
+        {
+            SettingsMenu.instance.ToggleWindow();
+            ScrollingText.instance.AddText(background.InitialMessage());
+            ScrollingText.instance.ActivateNextText();
+            background.openedOnce = true;
+        }
     }
 }

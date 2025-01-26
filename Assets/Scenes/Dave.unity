@@ -206,6 +206,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2194747721503290568, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2388617449507659221, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
       propertyPath: _bubble
       value: 
@@ -255,9 +259,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 6349523245313269866, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: sc
+      value: 
+      objectReference: {fileID: 1413847792}
+    - target: {fileID: 6349523245313269866, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
       propertyPath: 'backgrounds.Array.data[0]'
       value: 
-      objectReference: {fileID: 1911674043}
+      objectReference: {fileID: 1541846285}
+    - target: {fileID: 6349523245313269866, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: 'backgrounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 500982549}
+    - target: {fileID: 7297983462811156018, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7857111332715078796, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.56
@@ -270,11 +286,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8856729798152942513, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6570715947216767067, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+--- !u!1 &500982549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2194747721503290568, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+  m_PrefabInstance: {fileID: 307744111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +944,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -931,6 +957,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1541846285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8856729798152942513, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
+  m_PrefabInstance: {fileID: 307744111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1606856758
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,11 +1528,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 663555395}
   m_SourcePrefab: {fileID: 100100000, guid: 7168fda0c320fff489fe7c526a3b1afa, type: 3}
---- !u!1 &1911674043 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6570715947216767067, guid: 7aa20cb71a682ac4f96534e866ec0101, type: 3}
-  m_PrefabInstance: {fileID: 307744111}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
