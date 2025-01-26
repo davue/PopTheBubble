@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ContextMenu : MonoBehaviour
@@ -42,7 +41,7 @@ public class ContextMenu : MonoBehaviour
                 _deleteButton.interactable = true;
             }
         }
-        else if (screenMouse.x >= -5.3f && screenMouse.x <= -4f && screenMouse.y >= 0f && screenMouse.y <= 1.2f)
+        else if (screenMouse.x >= -5.3f && screenMouse.x <= -4f && screenMouse.y >= 0f && screenMouse.y <= 1.2f) 
         {
             _cutButton.interactable = false;
             _copyButton.interactable = false;
