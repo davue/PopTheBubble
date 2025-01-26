@@ -5859,6 +5859,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2031328946}
     - target: {fileID: 8782505536272190547, guid: 210d02f5b82e6b34e843c681dbd9b084, type: 3}
+      propertyPath: boomBox
+      value: 
+      objectReference: {fileID: 2017506041}
+    - target: {fileID: 8782505536272190547, guid: 210d02f5b82e6b34e843c681dbd9b084, type: 3}
       propertyPath: buttonsBar
       value: 
       objectReference: {fileID: 1778642288}
@@ -10623,7 +10627,7 @@ GameObject:
   - component: {fileID: 2017506038}
   - component: {fileID: 2017506041}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SpeakerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10696,7 +10700,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2017506041}
         m_TargetAssemblyTypeName: BoomBox, Assembly-CSharp
-        m_MethodName: TestBurst
+        m_MethodName: Burst
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10757,6 +10761,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 329053290}
+  disco: {fileID: 1137821459}
+  burstMultiplier: 1
 --- !u!1 &2031328946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6830396412506203390, guid: b75faf8dc8707084692234b6705408b0, type: 3}
