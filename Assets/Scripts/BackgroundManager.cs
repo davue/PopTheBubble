@@ -16,9 +16,11 @@ public class BackgroundManager : MonoBehaviour
 
     public void SetBackground(int i)
     {
+        Bubble.instance.EndDance();
         Camera.main.orthographicSize = 5;
         sc.ResetCursor();
         ActivateBackground(i);
+
     }
 
     private void ActivateBackground(int index)

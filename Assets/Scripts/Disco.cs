@@ -37,14 +37,24 @@ public class Disco : MonoBehaviour
 
     public bool minigameFinished = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public BoomBox boomBox;
+
+    void OnEnable()
+    {
+        
+        if(Bubble.instance.danceProgress < 2)
+            bubble.GetComponent<Bubble>().StartDance();
+        else bubble.GetComponent<Bubble>().EndDance();
+    }
+
     void Start()
     {
         Cursor.visible = false;
         discoButtonStartPos = discoButton.transform.position;
         prevDiscoPos= discoButtonStartPos.x;
         musicSource.Play();
-        bubble.GetComponent<Bubble>().StartDance();
         b = bubble.GetComponent<Bubble>();
+        DeactivateBoomBox();
     }
 
     // Update is called once per frame
@@ -119,7 +129,6 @@ public class Disco : MonoBehaviour
     public void ResetDisco()
     {
         discoButton.gameObject.SetActive(true);
-        this.gameObject.SetActive(true);
         timer.gameObject.SetActive(true);
         buttonsBar.gameObject.SetActive(true);
         resetDiscoButton();
@@ -152,5 +161,14 @@ public class Disco : MonoBehaviour
         prevDiscoPos = discoButtonStartPos.x;
         discoButton.transform.position = discoButtonStartPos;  
         discoButton.initArrow();
+    }
+
+    public void ActivateBoomBox()
+    {
+        boomBox.gameObject.SetActive(true);
+    }
+    public void DeactivateBoomBox()
+    {
+        boomBox.gameObject.SetActive(false);
     }
 }

@@ -33,11 +33,12 @@ public class BoomBox : MonoBehaviour
 
     public void Burst()
     {
+        if(Globals.freezeAll) return;
         StartCoroutine(internalBurst((int)(Globals.volumePercentage * burstMultiplier)));
         
         if(Globals.volumePercentage > 101)
         {
-            Bubble.instance.Pop(Bubble.PopType.VOLUMEPOP);
+            Bubble.instance.Pop(Bubble.PopType.DANCE);
             disco.musicSource.Stop();
         }
         else if(Globals.volumePercentage > 50)
@@ -55,7 +56,7 @@ public class BoomBox : MonoBehaviour
     private IEnumerator internalBurst(int intensity)
     {
         _emissionModule.rateOverTime = intensity * 10;
-        _mainModule.startSpeed = intensity * 5;
+        _mainModule.startSpeed = intensity * 3;
         yield return new WaitForSeconds(0.1f);
         _emissionModule.rateOverTime = 0;
         _mainModule.startSpeed = 5;

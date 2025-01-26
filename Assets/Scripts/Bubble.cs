@@ -46,6 +46,8 @@ public class Bubble : MonoBehaviour
 
     public MiniButtons miniButtons; 
 
+    public Disco disco;
+
     void Awake()
     {
         instance = this;
@@ -193,6 +195,12 @@ public class Bubble : MonoBehaviour
                     st.AddText("Oh no, I can't handle your dance moves! Your sick rythm is killing me!!!");
                     st.ActivateNextText();
                 }
+                if(danceProgress == 2)
+                {
+                    st.AddText("Ahhh, that was too loud!!! It hurts so much you idiot! Why did you crank the volume that high???");
+                    st.ActivateNextText();
+                    Bubble.instance.EndDance();
+                }
                 
             }
             
@@ -293,9 +301,22 @@ public class Bubble : MonoBehaviour
 
             if (type == PopType.DANCE)
             {
-                st.AddText("Anyways, I'll continue dancing!");
-                st.ActivateNextText();
-                this.StartDance();
+                if(danceProgress == 1)
+                {
+                    st.AddText("Anyways, I'll continue dancing!");
+                    st.ActivateNextText();
+                    this.StartDance();
+                    disco.ActivateBoomBox();
+
+                }
+                if(danceProgress == 2)
+                {
+                    st.AddText("You killed the mood. I am shutting this disco down, all because of you. Shame on you for ruining the day of all of our guests. ");
+                    st.ActivateNextText();
+                    disco.DeactivateBoomBox();
+                }
+            
+                
                 
             }
 
@@ -303,13 +324,6 @@ public class Bubble : MonoBehaviour
             {
                 st.AddText("Because you're behaving like a child, I deleted the delete menu for you. You're welcome.");
                 st.ActivateNextText();
-            }
-
-            if(type == PopType.VOLUMEPOP)
-            {
-                st.AddText("You killed the mood. I am shutting this disco down, all because of you. Shame on you for ruining the day of all of our guests. ");
-                st.ActivateNextText();
-                
             }
         }
     }
