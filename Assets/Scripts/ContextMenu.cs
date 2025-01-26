@@ -44,6 +44,8 @@ public class ContextMenu : MonoBehaviour
         }
         else if (screenMouse.x >= -4.2f && screenMouse.x <= -3f && screenMouse.y >= 2.3 && screenMouse.y <= 3.3)
         {
+            _cutButton.interactable = false;
+            _copyButton.interactable = false;
             _deleteButton.interactable = true;
             onRecycleBin = true;
             onBubble = false;
@@ -92,10 +94,5 @@ public class ContextMenu : MonoBehaviour
             _recycleBin.SetActive(false);
             recycleBinActive = false;
         }
-    }
-
-    void Update()
-    {
-        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 }

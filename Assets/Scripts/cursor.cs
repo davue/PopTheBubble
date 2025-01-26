@@ -5,6 +5,8 @@ public class cursor : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    public GameObject cursorObject;
+    public Vector3 initialPosition;
     float initSize;
     Vector3 initScale;
 
@@ -12,6 +14,7 @@ public class cursor : MonoBehaviour
     {
         initSize = Camera.main.orthographicSize;
         initScale = transform.localScale;
+        initialPosition = cursorObject.transform.localPosition;   
     }
 
     // Update is called once per frame
@@ -19,6 +22,7 @@ public class cursor : MonoBehaviour
     {
         transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());       
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        cursorObject.transform.localPosition = initialPosition;
         
         if(Globals.freezeAll || ScrollingText.instance.isActive()) return;
         
