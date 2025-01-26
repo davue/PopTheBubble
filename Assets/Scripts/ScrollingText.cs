@@ -101,7 +101,7 @@ public class ScrollingText : MonoBehaviour
 
             yield return new WaitForSeconds(waitTime);
         }
-        
+
         // Hide text panel if auto-close
         if (autoClose)
         {
