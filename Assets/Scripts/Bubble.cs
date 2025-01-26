@@ -51,6 +51,7 @@ public class Bubble : MonoBehaviour
     void Awake()
     {
         instance = this;
+        Cursor.visible = false;
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -161,6 +162,7 @@ public class Bubble : MonoBehaviour
             if (type == PopType.XP_DELETE)
             {
                 xpDelete++;
+                Globals.popCount--;
                 switch (xpDelete)
                 {
                     case 1:
@@ -172,6 +174,7 @@ public class Bubble : MonoBehaviour
                     default:
                         st.AddText("Go on. Try again.");
                         break;
+                    
                 }
                 
                 st.ActivateNextText();

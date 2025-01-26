@@ -22,5 +22,6 @@ public class Globals : MonoBehaviour
         scrollingText.AddText(introText);
         scrollingText.AddText(introText2);
         scrollingText.ActivateNextText();
+        popCount = 0;
     }
 }
