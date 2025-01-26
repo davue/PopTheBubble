@@ -9,7 +9,8 @@ public class Bubble : MonoBehaviour
     
     // XP state
     public bool xpCut = false;
-    public bool xpDelete = false;
+    public bool xpFinalDelete = false;
+    public int xpDelete = 0;
     
     public int zoomProgress = 0;
 
@@ -19,7 +20,8 @@ public class Bubble : MonoBehaviour
         DANCE,
         ZOOM,
         XP_CUT,
-        XP_DELETE
+        XP_DELETE,
+        XP_DELETE_RECYCLE,
     }
 
     public enum InteractionType
@@ -67,7 +69,7 @@ public class Bubble : MonoBehaviour
     public void Pop(PopType type)
     {
         if(type == PopType.XP_CUT && xpCut) Interact(InteractionType.XP_CUTE);
-        if(type == PopType.XP_DELETE && xpDelete) return;
+        if((type == PopType.XP_DELETE || type == PopType.XP_DELETE_RECYCLE) && xpFinalDelete) return;
         
         if(Globals.freezeAll) return;
 
@@ -141,8 +143,27 @@ public class Bubble : MonoBehaviour
             
             if (type == PopType.XP_DELETE)
             {
-                xpDelete = true;
-                st.AddText("Oh no! I'm gone!");
+                xpDelete++;
+                switch (xpDelete)
+                {
+                    case 1:
+                        st.AddText("Oh no! I'm gone!");
+                        break;
+                    case 2:
+                        st.AddText("You know this doesn't work.");
+                        break;
+                    default:
+                        st.AddText("Go on. Try again.");
+                        break;
+                }
+                
+                st.ActivateNextText();
+            }
+            
+            if (type == PopType.XP_DELETE_RECYCLE)
+            {
+                xpFinalDelete = true;
+                st.AddText("Hey! I should not have told you about the recycle bin.");
                 st.ActivateNextText();
             }
             
@@ -225,13 +246,30 @@ public class Bubble : MonoBehaviour
 
             if (type == PopType.XP_CUT)
             {
-                st.AddText("Please don't do that.");
+                st.AddText("Please don't do that. And to make sure it doesn't happen again, I made the cut a little nicer.");
                 st.ActivateNextText();
             }
             
             if (type == PopType.XP_DELETE)
             {
-                st.AddText("Ha! I just climbed out of the Recycling Bin!");
+                switch (xpDelete)
+                {
+                    case 1:
+                        st.AddText("Ha! I just climbed out of the recycle bin again!");
+                        break;
+                    case 2:
+                        st.AddText("Things are not permanently deleted in Windows...");
+                        break;
+                    default:
+                        st.AddText("This is getting boring.");
+                        break;
+                }
+                st.ActivateNextText();
+            }
+
+            if (type == PopType.XP_DELETE_RECYCLE)
+            {
+                st.AddText("Do I have to disable everything? You're like a child.");
                 st.ActivateNextText();
             }
         }

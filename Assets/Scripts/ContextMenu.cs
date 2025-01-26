@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ContextMenu : MonoBehaviour
@@ -11,6 +12,7 @@ public class ContextMenu : MonoBehaviour
     public Button _copyButton;
     public bool onBubble = false;
     public bool onRecycleBin = false;
+    public bool recycleBinActive = true;
 
     private Vector3 openPosition;
 
@@ -27,14 +29,24 @@ public class ContextMenu : MonoBehaviour
         if (screenMouse.magnitude < 2.1f)
         {
             onBubble = true;
-            _deleteButton.interactable = true;
+            onRecycleBin = false;
             _copyButton.interactable = true;
             _cutButton.interactable = true;
+
+            if (_bubble.xpFinalDelete)
+            {
+                _deleteButton.interactable = false;
+            }
+            else
+            {
+                _deleteButton.interactable = true;
+            }
         }
-        else if (screenMouse.x >= -7.5f && screenMouse.x <= -6.3f && screenMouse.y >= 3.5 && screenMouse.y <= 4.7)
+        else if (screenMouse.x >= -4.2f && screenMouse.x <= -3f && screenMouse.y >= 2.3 && screenMouse.y <= 3.3)
         {
             _deleteButton.interactable = true;
             onRecycleBin = true;
+            onBubble = false;
         }
         else
         {
@@ -67,10 +79,23 @@ public class ContextMenu : MonoBehaviour
     {
         if (onBubble)
         {
-            _bubble.Pop(Bubble.PopType.XP_DELETE);
+            if (recycleBinActive)
+            {
+                _bubble.Pop(Bubble.PopType.XP_DELETE);
+            }
+            else
+            {
+                _bubble.Pop(Bubble.PopType.XP_DELETE_RECYCLE);
+            }
         } else if (onRecycleBin)
         {
             _recycleBin.SetActive(false);
+            recycleBinActive = false;
         }
+    }
+
+    void Update()
+    {
+        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 }

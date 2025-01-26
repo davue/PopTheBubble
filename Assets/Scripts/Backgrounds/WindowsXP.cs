@@ -3,7 +3,6 @@ using UnityEngine;
 public class WindowsXP : Background
 {
     [SerializeField] private GameObject contextMenu;
-    private bool closeContextMenu = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,8 +14,13 @@ public class WindowsXP : Background
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            contextMenu.transform.position = new Vector3(-10000, -10000, 0);
+        }
+        
         if (Globals.freezeAll) return;
-        // TODO: Return if ScrollingTExt is active
+        if (ScrollingText.instance.isActive()) return;
         
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -31,11 +35,6 @@ public class WindowsXP : Background
                 Input.mousePosition.x - Camera.main.pixelWidth / 2 - contextMenuTransform.rect.x,
                 Input.mousePosition.y - Camera.main.pixelHeight / 2 + contextMenuTransform.rect.y, 0);
             contextMenu.GetComponent<ContextMenu>().OnOpen();
-        }
-        
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            contextMenu.transform.position = new Vector3(-10000, -10000, 0);
         }
     }
 }
