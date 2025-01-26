@@ -23,6 +23,9 @@ public class MiniButtons : MonoBehaviour
 
     public void SubmitPassword()
     {
+        if(Globals.freezeAll) return;
+        if(ScrollingText.instance.isActive()) return;
+
         if(inputField.text == password)
         {
 
@@ -44,6 +47,7 @@ public class MiniButtons : MonoBehaviour
     public void MakeBubblePop()
     {
         if(Globals.freezeAll) return;
+        if(ScrollingText.instance.isActive()) return;
         Camera.main.orthographicSize = 5;
         sc.ResetCursor();
         bubble.Pop(Bubble.PopType.ZOOM);
