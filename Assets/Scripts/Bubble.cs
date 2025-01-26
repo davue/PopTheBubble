@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
+    public static Bubble instance;
     public ParticleSystem ps;
     private bool _isPopped;
 
@@ -11,6 +12,8 @@ public class Bubble : MonoBehaviour
     public bool xpCut = false;
     public bool xpFinalDelete = false;
     public int xpDelete = 0;
+
+    public int danceProgress = 0;
     
     public int zoomProgress = 0;
 
@@ -22,6 +25,7 @@ public class Bubble : MonoBehaviour
         XP_CUT,
         XP_DELETE,
         XP_DELETE_RECYCLE,
+        VOLUMEPOP
     }
 
     public enum InteractionType
@@ -42,7 +46,10 @@ public class Bubble : MonoBehaviour
 
     public MiniButtons miniButtons; 
 
-    
+    void Awake()
+    {
+        instance = this;
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -75,6 +82,8 @@ public class Bubble : MonoBehaviour
         if(Globals.freezeAll) return;
 
         if(st.isActive()) return; 
+
+        
         
 
         if (!_isPopped)
@@ -87,6 +96,7 @@ public class Bubble : MonoBehaviour
             Globals.popCount++;
 
             st.ClearQueue();
+
 
             if(type == PopType.INTRO) 
             {
@@ -176,9 +186,14 @@ public class Bubble : MonoBehaviour
 
             if(type == PopType.DANCE)
             {
-                st.AddText("Oh no, I can't handle your dance moves! Your sick rythm is killing me!!!");
+                danceProgress++;
 
-                st.ActivateNextText();
+                if(danceProgress == 1)
+                {
+                    st.AddText("Oh no, I can't handle your dance moves! Your sick rythm is killing me!!!");
+                    st.ActivateNextText();
+                }
+                
             }
             
             // Hide bubble
@@ -289,6 +304,13 @@ public class Bubble : MonoBehaviour
                 st.AddText("Because you're behaving like a child, I deleted the delete menu for you. You're welcome.");
                 st.ActivateNextText();
             }
+
+            if(type == PopType.VOLUMEPOP)
+            {
+                st.AddText("You killed the mood. I am shutting this disco down, all because of you. Shame on you for ruining the day of all of our guests. ");
+                st.ActivateNextText();
+                
+            }
         }
     }
     
@@ -296,15 +318,6 @@ public class Bubble : MonoBehaviour
     void Update()
     {   
         if(!debug) return;
-        if(Input.GetKeyDown("p") && !_isPopped)
-        {
-             Pop(PopType.INTRO);
-        }
-        
-        if(Input.GetKeyDown("r") && _isPopped)
-        {
-            UnPop(PopType.INTRO);
-        }
 
         if(!st.isActive() && _isPopped)
         {

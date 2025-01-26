@@ -7,6 +7,10 @@ public class BoomBox : MonoBehaviour
     private ParticleSystem.EmissionModule _emissionModule;
     private ParticleSystem.MainModule _mainModule;
 
+    public Disco disco;
+
+    public float burstMultiplier = 1f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +31,27 @@ public class BoomBox : MonoBehaviour
         StartCoroutine(internalBurst(100)); 
     }
 
+    public void Burst()
+    {
+        StartCoroutine(internalBurst((int)(Globals.volumePercentage * burstMultiplier)));
+        
+        if(Globals.volumePercentage > 101)
+        {
+            Bubble.instance.Pop(Bubble.PopType.VOLUMEPOP);
+            disco.musicSource.Stop();
+        }
+        else if(Globals.volumePercentage > 50)
+        {
+            ScrollingText.instance.AddText("Oh wow, thats unconfortably loud! Can you keep it a little bit quieter please? I am a sensitive bubble after all.");
+            ScrollingText.instance.ActivateNextText();
+        }
+        else
+        {
+            ScrollingText.instance.AddText("Wuhu, bubble shower!");
+            ScrollingText.instance.ActivateNextText();
+        }
+    }
+
     private IEnumerator internalBurst(int intensity)
     {
         _emissionModule.rateOverTime = intensity * 10;
@@ -39,5 +64,6 @@ public class BoomBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 }

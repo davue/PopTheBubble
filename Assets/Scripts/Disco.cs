@@ -34,6 +34,8 @@ public class Disco : MonoBehaviour
     public const float initalPitch = 0.7f;
     public float pitchStepSize = 0.1f;
     public bool pitchSizeAdditive = true;
+
+    public bool minigameFinished = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,6 +50,7 @@ public class Disco : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(minigameFinished) return;
         if(ScrollingText.instance.isActive()) return;
         if(Globals.freezeAll) return;
 
@@ -108,9 +111,9 @@ public class Disco : MonoBehaviour
         //if(musicSource.isPlaying) musicSource.Stop();
 
         discoButton.gameObject.SetActive(false);
-        this.gameObject.SetActive(false);
         timer.gameObject.SetActive(false);
         buttonsBar.gameObject.SetActive(false);
+        minigameFinished = true;
     }
 
     public void ResetDisco()
