@@ -27,9 +27,9 @@ public class MiniButtons : MonoBehaviour
         {
 
             securitySpawner.gameObject.SetActive(false);
-            ScrollingText.instance.AddText("Nooo, you got it right! You're not supposed to know that password!"
+            ScrollingText.instance.AddText("Wait?! How did you figure out the admin password? You're not supposed to know that! Management really needs to get their s**t together."
             + " But at least you also agree that Marbles are the worst!");
-            ScrollingText.instance.AddText("But don't touch the buttons, I beg you!!! Please let me live!");
+            ScrollingText.instance.AddText("Just don't touch the buttons, I beg you!!! Please let me live!");
             ScrollingText.instance.ActivateNextText();
         }
         else

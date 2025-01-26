@@ -94,20 +94,17 @@ public class Bubble : MonoBehaviour
                 switch(introProgress)
                 {
                     case 1:
-                        st.AddText("OMG, you killed me! No worries, that happens, but please be more careful, ok?");
+                        st.AddText("OMG, you killed me! But don't worry, that happens. This cursor can be lethal, if you touch me with it. Handle it with care please.");
                         break;
                     case 2:
-                        st.AddText("Oh no, it happened again! Please, be more careful! :(");
-                        st.AddText("I have many lives, but no need to waste them. Please, be more careful!");
+                        st.AddText("Oh no, it happened again! :(");
+                        st.AddText("I have many lives, but no need to waste them.");
+                        st.AddText("Here, I'm going to switch the cursor for you, the one you are using is quite pointy.");
                         break;
                     case 3:
-                        st.AddText("Why did you do that? I went out of my way to switch the cursor for you! Are you doing this on purpose?");
-                        break;
-                    case 4:
-                        st.AddText("Ouch! That hurts so much! Are you doing this on purpose? I thought we are friends! :'(");
-                        break;
-                    case 5:
-                        st.AddText("You Idiot, you killed me again! I'm so done with you! I tried to be nice to you but you are just a monster!");
+                        st.AddText("Why did you do that? I went out of my way to switch the cursor for you! Why would you switch it back? Are you stupid?");
+                        st.AddText("Ugh, this is getting on my nerves....");
+                        st.AddText("You must be a really stupid one. I guess I have to take the pointy cursor away from you to make sure that you can't hurt me anymore.");
                         break;
                     default:
                         st.AddText("You allready killed me " + Globals.popCount + " times! Stop it! >:( ");
@@ -122,11 +119,18 @@ public class Bubble : MonoBehaviour
                 switch(zoomProgress)
                 {
                     case 1:
-                        st.AddText("Hey, what did you do? Can you not read or what? It told you not to press any buttons! You are such an Idiot!!!");
+                        st.AddText("Hey, what did you do?");
+                        st.AddText("Listen. If management tells you not to press any buttons, you better not press any buttons. You do not want to mess with management.");
                         break;
 
                     case 2:
+                        st.AddText("Ouch! Stop!");
+                        st.AddText("Again?");
                         st.AddText("You are such a sadistic bastard! You know what you remind me of? Fucking marbles! I hate those Fuckers!!!");
+                        break;
+                    case 3:
+                        st.AddText("...");
+                        st.AddText("Did those button really promise you something so lucrative, that you would ignore everything you are told and go out of your way to get an admin password to press it?");
                         break;
                     default:
                         st.AddText("You allready killed me " + Globals.popCount + " times! Stop it! >:( ");
@@ -164,7 +168,9 @@ public class Bubble : MonoBehaviour
             if (type == PopType.XP_DELETE_RECYCLE)
             {
                 xpFinalDelete = true;
-                st.AddText("Hey! I should not have told you about the recycle bin.");
+                st.AddText("I guess that one's on me. I should not have told you about the recycling bin.");
+                st.AddText("If you delete the recycling bin, where does it go? Is there a second recycling bin containing the first one? And what happens if you delete that one as well?");
+                st.AddText("And I guess no matter how deep this recursion grows, you'll keep destroing every last one of those recycling bins...");
                 st.ActivateNextText();
             }
 
@@ -197,23 +203,14 @@ public class Bubble : MonoBehaviour
                         st.AddText("I can respawn though, so don't worry! Let's continue playing! :)");
                         break;
                     case 2:
-                        st.AddText("Here, I switch the cursor for you, the one you use is quite pointy!");
+                        st.AddText("There you go. I hope you like it!");
                         cursorSwap.swap(1);
-                        st.AddText("I hope you like it!");
-                        Globals.cursorSwapPhase = true;
+                        st.AddText("With this one, you don't have to worry to pop me by accident anymore.");
                         break;
                     case 3:
-                        Globals.cursorSwapPhase = false;
-                        st.AddText("Ugh, this is getting on my nerves....");
-                        st.AddText("You are really a stupid one, aren't you? I'll make sure you can't hurt me anymore.");
                         cursorSwap.swap(1);
+                        st.AddText("Why do they always give me the idiots for play testing?");
                         settingsMenu.removeCursorOption();
-                        break;
-                    case 4:
-                        st.AddText("Please show some respect! I'm not a toy! >:(");
-                        break;
-                    case 5:
-                        st.AddText("You bastard, I warn you! Don't anger me too much or you will regret it!!!");
                         break;
                     default:
                         break;
@@ -226,8 +223,7 @@ public class Bubble : MonoBehaviour
                 switch(zoomProgress)
                 {
                     case 1:
-                        st.AddText("I lock these buttons away so you can't mess with them anymore!");
-                        miniButtons.SpawnSecurity();
+                        st.AddText("Please. Most of those buttons seem suspicious anyways. No need to try your luck.");
                         break;
 
                     case 2: 
@@ -239,10 +235,17 @@ public class Bubble : MonoBehaviour
                         + "some dumb kid with sticky fingers pops me. And you know what? I get it. I’m fragile. Fleeting. But at least I go out in style. What happens when you break a marble? Nothing. Just a bunch of sad little glass shards sitting in a gutter somewhere. Pathetic."
                         + "And don’t even get me started on how they hog all the attention. “Oh wow, look at that cool swirl inside!” Are you fucking kidding me? I am a swirl. I embody swirls. I reflect the entire fucking spectrum of light in a way marbles could only dream of. But no, people want to collect those chunky hunks of glass instead. Marbles are basically just the try-hard cousins of actual gemstones, but without any of the class. They sit around in dusty jars or roll under couches, forgotten and useless. Meanwhile, bubbles like me? We’re fleeting magic. We make moments special. But do we get respect? Nope. Instead, we get laughed at, blown around, and popped like we’re disposable."
                         + "So yeah, fuck marbles. Overrated, overhyped, and over here taking up space in a world that deserves more bubbles.");
+                        st.AddText("...");
+                        st.AddText("Anyways...");
+                        st.AddText("Now you've done it. Management locked my buttons away, such that only admins can access them.");
+                        miniButtons.SpawnSecurity();
+                        break;
+                    case 3:
+                        st.AddText("I guess you have to be helped to help yourself. No more admin access for you!");
                         miniButtons.SpawnSecurity();
                         miniButtons.deactivateInputField();
                         break;
-                    
+
                     default:
                         break;
                 }
@@ -261,10 +264,10 @@ public class Bubble : MonoBehaviour
                 switch (xpDelete)
                 {
                     case 1:
-                        st.AddText("Ha! I just climbed out of the recycle bin again!");
+                        st.AddText("Ha! You can't get rid of me that easily! I just climbed out of the recycle bin again!");
                         break;
                     case 2:
-                        st.AddText("Things are not permanently deleted in Windows...");
+                        st.AddText("Things are never permanently deleted in Windows... As long as there's a recycling bin, there's always a way back out of it. It's called 'Recycling' for a reason.");
                         break;
                     default:
                         st.AddText("This is getting boring.");
@@ -283,7 +286,7 @@ public class Bubble : MonoBehaviour
 
             if (type == PopType.XP_DELETE_RECYCLE)
             {
-                st.AddText("Do I have to disable everything? You're like a child.");
+                st.AddText("Because you're behaving like a child, I deleted the delete menu for you. You're welcome.");
                 st.ActivateNextText();
             }
         }
