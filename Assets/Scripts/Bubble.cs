@@ -74,7 +74,7 @@ public class Bubble : MonoBehaviour
         
         if(Globals.freezeAll) return;
 
-        if(st.isActive()) return;
+        if(st.isActive()) return; 
         
 
         if (!_isPopped)
