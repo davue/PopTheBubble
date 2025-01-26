@@ -7989,7 +7989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.68, y: -30.46}
+  m_AnchoredPosition: {x: -1.68, y: -30.459991}
   m_SizeDelta: {x: 325.18, y: 60.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1067997961
@@ -10001,6 +10001,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 624787466956971417, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseWindow
+      objectReference: {fileID: 0}
     - target: {fileID: 739883672616839219, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -10127,7 +10131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3772013888819953957, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.000000059604645
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3935435052108828387, guid: efdd8bc1a24b8384d9dc731e93c6cc17, type: 3}
       propertyPath: m_Camera

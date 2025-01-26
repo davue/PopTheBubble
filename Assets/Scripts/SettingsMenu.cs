@@ -28,16 +28,37 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    public void ToggleWindow()
-    
+    public void CloseWindow()
+    {
+        Globals.freezeAll = false; UnityEngine.Cursor.visible = false;
+        if(active)
+        {
+            child.gameObject.SetActive(false);
+            active = false;
+        }
+        
+    }
+
+    public void OpenWindow()
     {
         if(scrollingText.isActive()) return;
 
-        active = !active;
-        child.gameObject.SetActive(active);
-        
-        if(active){ Globals.freezeAll = true; UnityEngine.Cursor.visible = true;}
-        else { Globals.freezeAll = false; UnityEngine.Cursor.visible = false;}
+        active = true;
+        child.gameObject.SetActive(true);
+        Globals.freezeAll = true; UnityEngine.Cursor.visible = true;
+    }
+
+    public void ToggleWindow()
+    
+    {
+        if(active)
+        {
+            CloseWindow();
+        }
+        else
+        {
+            OpenWindow();
+        }
 
     }
 

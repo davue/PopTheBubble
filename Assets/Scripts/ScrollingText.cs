@@ -9,7 +9,7 @@ public class ScrollingText : MonoBehaviour
     public static ScrollingText instance;
     private readonly List<char> _punctuations = new() { '.', '!', '?' };
 
-    public const int fontSize = 36;
+    public const int fontSize = 48;
 
     private CanvasRenderer _renderer;
     private Transform _child;
@@ -35,11 +35,13 @@ public class ScrollingText : MonoBehaviour
         _child = transform.GetChild(0);
         _renderer = _child.GetComponent<CanvasRenderer>();
         instance = this;
+        
     }
 
     public void Start()
     {
         if(Globals.cheatMode) _child.gameObject.SetActive(false);
+        textBox.fontSize = fontSize;
         
     }
 

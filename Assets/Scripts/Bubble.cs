@@ -253,7 +253,7 @@ public class Bubble : MonoBehaviour
                         break;
 
                     case 2: 
-                        st.textBox.fontSize = 13;
+                        st.textBox.fontSize = 16;
                         st.AddText("Those fucking marbles are even worse than you, you Monster!"
                         + "Those smug, solid little bastards rolling around like they own the damn world. Look at me—I’m a bubble, light, graceful, elegant."
                         + "I float with finesse. I reflect rainbows like it’s my goddamn job. But marbles? Oh no, they just plop their dense, self-important asses down and sit there, pretending to be all valuable and collectible. Newsflash, you shiny rocks: no one actually likes you."
