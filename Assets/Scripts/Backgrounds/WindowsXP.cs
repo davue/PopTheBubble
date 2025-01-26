@@ -37,8 +37,8 @@ public class WindowsXP : Background
 
             var contextMenuTransform = (RectTransform)contextMenu.transform;
             contextMenu.transform.localPosition = new Vector3(
-                Input.mousePosition.x - Camera.main.pixelWidth / 2 - contextMenuTransform.rect.x,
-                Input.mousePosition.y - Camera.main.pixelHeight / 2 + contextMenuTransform.rect.y, 0);
+                Input.mousePosition.x - Camera.main.pixelWidth / 2 - contextMenuTransform.rect.x * contextMenuTransform.localScale.x,
+                Input.mousePosition.y - Camera.main.pixelHeight / 2 + contextMenuTransform.rect.y * contextMenuTransform.localScale.y, 0);
             contextMenu.GetComponent<ContextMenu>().OnOpen();
         }
     }

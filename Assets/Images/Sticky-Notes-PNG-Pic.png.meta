@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sticky-Notes-PNG-Pic_0: -720878303858545956
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

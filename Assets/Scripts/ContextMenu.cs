@@ -25,7 +25,7 @@ public class ContextMenu : MonoBehaviour
     {
         var screenMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         screenMouse.z = 0;
-
+        
         if (screenMouse.magnitude < 2.1f)
         {
             onBubble = true;
@@ -42,7 +42,7 @@ public class ContextMenu : MonoBehaviour
                 _deleteButton.interactable = true;
             }
         }
-        else if (screenMouse.x >= -4.2f && screenMouse.x <= -3f && screenMouse.y >= 2.3 && screenMouse.y <= 3.3)
+        else if (screenMouse.x >= -5.3f && screenMouse.x <= -4f && screenMouse.y >= 0f && screenMouse.y <= 1.2f)
         {
             _cutButton.interactable = false;
             _copyButton.interactable = false;
@@ -94,5 +94,10 @@ public class ContextMenu : MonoBehaviour
             _recycleBin.SetActive(false);
             recycleBinActive = false;
         }
+    }
+
+    void Update()
+    {
+        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 }
