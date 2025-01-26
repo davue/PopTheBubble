@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,9 +22,14 @@ public class Disco : MonoBehaviour
 
     // notify this object of missed/hit inputs
     public GameObject bubble;
+    Bubble b;
 
     // music
     public AudioSource musicSource;
+
+    public int scoreTarget;
+
+    public Transform buttonsBar;
 
     public const float initalPitch = 0.7f;
     public float pitchStepSize = 0.1f;
@@ -36,6 +42,7 @@ public class Disco : MonoBehaviour
         prevDiscoPos= discoButtonStartPos.x;
         musicSource.Play();
         bubble.GetComponent<Bubble>().StartDance();
+        b = bubble.GetComponent<Bubble>();
     }
 
     // Update is called once per frame
@@ -45,7 +52,21 @@ public class Disco : MonoBehaviour
         if(Globals.freezeAll) return;
 
         if(timer.totalTime <= 0) { // time's up
-            teardownDisco();
+
+            b.EndDance();
+
+            if(timer.score >= scoreTarget)
+            {
+                b.Pop(Bubble.PopType.DANCE);
+                teardownDisco(); 
+            }
+            else
+            {
+                ScrollingText.instance.AddText("Hahaha, you are a good dancer! But don't go too hard ok? I am pretty fragile and the sick beats hit me hard <3");
+                ScrollingText.instance.AddText("Let's Dance again :)");
+                ScrollingText.instance.ActivateNextText();
+                ResetDisco();
+            }
         }
         else {
             float discoPos = discoButton.transform.position.x;
@@ -81,14 +102,30 @@ public class Disco : MonoBehaviour
         
     }
 
-    void teardownDisco() {
-        if(musicSource.isPlaying) musicSource.Stop();
-        bubble.GetComponent<Bubble>().Pop(Bubble.PopType.DANCE);
-        bubble.GetComponent<Bubble>().EndDance();
+    void teardownDisco() 
+    {
+        musicSource.pitch = 1f;
+        //if(musicSource.isPlaying) musicSource.Stop();
 
         discoButton.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
+        timer.gameObject.SetActive(false);
+        buttonsBar.gameObject.SetActive(false);
     }
+
+    public void ResetDisco()
+    {
+        discoButton.gameObject.SetActive(true);
+        this.gameObject.SetActive(true);
+        timer.gameObject.SetActive(true);
+        buttonsBar.gameObject.SetActive(true);
+        resetDiscoButton();
+        timer.Reset();
+        musicSource.pitch = initalPitch;
+        discoButton.stepSize = discoButton.initStepSize;
+        b.StartDance();
+    }
+    
 
     void hitInput() {
         Debug.Log("Hit Input");

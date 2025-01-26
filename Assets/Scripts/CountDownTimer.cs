@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class CountDownTimer : MonoBehaviour
 {
 
+    float initialTotalTime;
     public float totalTime = 60; //Set the total time for the countdown
+    float elapsedTime = 0;
 
     public int score = 0;
     public TextMeshProUGUI timerText;
@@ -13,6 +15,7 @@ public class CountDownTimer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+      initialTotalTime = totalTime;
     }
 
   void Update()
@@ -48,6 +51,12 @@ public class CountDownTimer : MonoBehaviour
     public void addBonus()
     {
       score += 10;
+    }
+
+    public void Reset()
+    {
+      totalTime = initialTotalTime;
+      score = 0;
     }
 
 }

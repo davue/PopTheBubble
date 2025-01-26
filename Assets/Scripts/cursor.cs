@@ -20,19 +20,16 @@ public class cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());       
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         transform.rotation = Quaternion.identity;
         cursorObject.transform.localPosition = initialPosition;
         
         if(Globals.freezeAll || ScrollingText.instance.isActive()) return;
-        
+
         float ScrollWheelChange = Input.GetAxis("Mouse ScrollWheel");
-        if(Input.GetKeyDown(KeyCode.UpArrow)) {
-            ScrollWheelChange = 0.5f;   
-        }else if(Input.GetKeyDown(KeyCode.DownArrow)){
-            ScrollWheelChange = -0.5f;   
-        }
         if(ScrollWheelChange != 0) {
             transform.localScale += transform.localScale * ScrollWheelChange;
         }

@@ -170,7 +170,8 @@ public class Bubble : MonoBehaviour
 
             if(type == PopType.DANCE)
             {
-                st.AddText("Tenst");
+                st.AddText("Oh no, I can't handle your dance moves! Your sick rythm is killing me!!!");
+
                 st.ActivateNextText();
             }
             
@@ -270,6 +271,14 @@ public class Bubble : MonoBehaviour
                         break;
                 }
                 st.ActivateNextText();
+            }
+
+            if (type == PopType.DANCE)
+            {
+                st.AddText("Anyways, I'll continue dancing!");
+                st.ActivateNextText();
+                this.StartDance();
+                
             }
 
             if (type == PopType.XP_DELETE_RECYCLE)
